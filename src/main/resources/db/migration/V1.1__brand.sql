@@ -1,5 +1,3 @@
-CREATE SCHEMA IF NOT EXISTS ciq;
-
 CREATE table `brand`(
     `pid` INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
     `name` VARCHAR(50) NOT NULL,
@@ -9,7 +7,7 @@ CREATE table `brand`(
     `deleted_ind` BIGINT NOT NULL DEFAULT 0,
     `create_user` VARCHAR(50) NOT NULL,
     `last_update_user` VARCHAR(50),
-    `delete_user` VARCHAR(50),
-    UNIQUE
-    (`name`,`deleted_ind`)
+    `delete_user` VARCHAR(50)
 );
+
+CREATE UNIQUE INDEX IDX_UNQ_BRAND_NAME_DEL ON brand(name, deleted_ind);
